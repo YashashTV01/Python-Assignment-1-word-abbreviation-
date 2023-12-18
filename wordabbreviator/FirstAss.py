@@ -1,5 +1,6 @@
 import numpy as np # Importing necessary libraries for the program
 import re
+import os
 
 def word_least_letter_checker(theword, sorted_postn_values): # Function to check the least letter in a word
     least_letter = None
@@ -186,6 +187,12 @@ def abbreviator(path): # Main function to abbreviate names in a file
     with open('output/' + output_name, 'w') as file:
         file.write('\n'.join(names_and_abbs))
 
-if __name__ == '__main__': # Main block to execute when the script is run directly
-    path = input('Please enter data filename and path: ') # Get user input for the data filename and path
-    abbreviator(path) # Call the abbreviator function with the provided path
+if __name__ == '__main__':
+    while True:
+        path = input('Please enter data filename and path: ') #to enter the input from user
+
+        if os.path.exists(path):  # check if the file exists
+            abbreviator(path)      # call the abbreviator function with the provided path
+            break  # Exit the loop if a valid file is entered
+        else:
+            print(f"Error: File '{path}' does not exist. Please enter a valid filename and path.") #error message to user and to correct the file path
