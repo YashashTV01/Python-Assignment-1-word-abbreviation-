@@ -1,236 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <title>Word Abbreviation Tool</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+  <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Word Abbreviation Tool</title>
+ <style>
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 
-        body {
-            font-family: 'Quicksand', Arial, sans-serif;
-            margin: 40px;
-            background: linear-gradient(135deg, #d9f0ff 0%, #f0fbff 100%);
-            color: #2a3d45;
-        }
+  :root {
+    --primary-color: #3b82f6;
+    --secondary-color: #1e3a5f;
+    --bg-color: #f7fcff;
+    --text-color: #2a3d45;
+  }
 
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: #f7fcff;
-            padding: 35px 40px;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(100, 160, 210, 0.3);
-            border: 1px solid #a9c9e8;
-        }
+  * {
+    box-sizing: border-box;
+  }
 
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 28px;
-            color: #3b82f6;
-            text-align: center;
-            letter-spacing: 1.2px;
-            text-shadow: 1px 1px 3px #a2caffcc;
-        }
+  body {
+    font-family: 'Quicksand', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #d9f0ff 0%, #f0fbff 100%);
+    color: var(--text-color);
+  }
 
-        label {
-            font-weight: 600;
-            color: #1e3a5f;
-            display: block;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
+  .container {
+    max-width: 700px;
+    margin: auto;
+    background: var(--bg-color);
+    padding: 35px 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(100, 160, 210, 0.3);
+    border: 1px solid #a9c9e8;
+  }
 
-        input[type="text"] {
-            width: 100%;
-            padding: 12px 14px;
-            margin: 14px 0 22px;
-            border-radius: 12px;
-            border: 1.5px solid #c9e1f9;
-            font-size: 1rem;
-            background: #e9f5ff;
-            color: #23517c;
-            transition: border-color 0.3s ease;
-        }
+  h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    margin-bottom: 16px;
+    color: var(--primary-color);
+    text-align: center;
+    letter-spacing: 1.2px;
+    text-shadow: 1px 1px 3px #a2caffcc;
+  }
 
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #3b82f6;
-            background: #d0e8ff;
-            box-shadow: 0 0 8px rgba(59, 130, 246, 0.25);
-        }
+  .intro-text {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-        button {
-            background-color: #3b82f6;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 0.05em;
-            box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
-            transition: background-color 0.3s ease;
-            width: 100%;
-        }
+  label {
+    font-weight: 600;
+    color: var(--secondary-color);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+  }
 
-        button:hover {
-            background-color: #265ecf;
-            box-shadow: 0 8px 20px rgba(38, 94, 207, 0.6);
-        }
+  input[type="text"] {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 14px 0 22px;
+    border-radius: 12px;
+    border: 1.5px solid #c9e1f9;
+    font-size: 1rem;
+    background: #e9f5ff;
+    color: #23517c;
+    transition: border-color 0.3s ease;
+  }
 
-        .form-section {
-            margin-bottom: 38px;
-        }
+  input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: #d0e8ff;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.25);
+  }
 
-        hr {
-            border: none;
-            border-top: 1px solid #b5d0fc;
-            margin: 40px 0;
-            opacity: 0.5;
-        }
+  button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
 
-        .result {
-            background-color: #dbeeff;
-            border: 1.5px solid #a9c9e8;
-            padding: 18px 22px;
-            border-radius: 12px;
-            margin-top: 22px;
-            font-size: 1.15rem;
-            color: #23517c;
-            white-space: pre-wrap;
-            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.25);
-            font-family: 'Courier New', Courier, monospace;
-        }
+  button:hover {
+    background-color: #265ecf;
+    box-shadow: 0 8px 20px rgba(38, 94, 207, 0.6);
+  }
 
-        /* Custom file upload styles */
-        .file-upload-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-top: 14px;
-            margin-bottom: 22px;
-        }
+  .form-section {
+    margin-bottom: 38px;
+  }
 
-        /* Hide the native file input */
-        input[type="file"] {
-            display: none;
-        }
+  hr {
+    border: none;
+    border-top: 1px solid #b5d0fc;
+    margin: 40px 0;
+    opacity: 0.5;
+  }
 
-        /* Custom Choose File button */
-        .custom-file-btn {
-            background-color: #3b82f6;
-            color: white;
-            padding: 12px 26px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 1rem;
-            border: none;
-            transition: background-color 0.3s ease;
-            user-select: none;
-            box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
-        }
+  .result {
+    background-color: #dbeeff;
+    border: 1.5px solid #a9c9e8;
+    padding: 18px 22px;
+    border-radius: 12px;
+    margin-top: 22px;
+    font-size: 1.15rem;
+    color: #23517c;
+    white-space: pre-wrap;
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.25);
+    font-family: 'Courier New', Courier, monospace;
+  }
 
-        .custom-file-btn:hover {
-            background-color: #265ecf;
-            box-shadow: 0 8px 20px rgba(38, 94, 207, 0.6);
-        }
+  .file-upload-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+    margin-bottom: 22px;
+  }
 
-        /* File name display */
-        .file-name {
-            font-size: 1rem;
-            color: #23517c;
-            font-family: 'Courier New', Courier, monospace;
-            max-width: 280px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
+  input[type="file"] {
+    display: none;
+  }
 
-        /* Responsive tweaks */
-        @media (max-width: 650px) {
-            body {
-                margin: 20px 15px;
-            }
-            .container {
-                padding: 25px 20px;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
-            button, .custom-file-btn {
-                font-size: 1rem;
-                padding: 10px 18px;
-            }
-            .file-name {
-                max-width: 180px;
-            }
-        }
-    </style>
+  .custom-file-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 26px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
+  }
+
+  .custom-file-btn:hover {
+    background-color: #265ecf;
+    box-shadow: 0 8px 20px rgba(38, 94, 207, 0.6);
+  }
+
+  .file-name {
+    font-size: 1rem;
+    color: #23517c;
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 24px 16px;
+    }
+
+    .custom-file-btn, button {
+      font-size: 0.95rem;
+      padding: 10px 14px;
+    }
+
+    .file-upload-wrapper {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .file-name {
+      text-align: center;
+    }
+  }
+</style>
+
 </head>
 <body>
-    <div class="container">
-        <h1>Word Abbreviation Tool</h1>
+  <div class="container">
+    <h1>Word Abbreviation Tool</h1>
+<p class="intro-text">
+  Welcome! This tool is designed to help you create clear and concise abbreviations from full names or text files. Simply upload a file or type a word below, and we’ll generate its abbreviation in seconds.
+</p>
 
-        <!-- File Upload Form -->
-        <div class="form-section">
-            <form action="/upload" method="POST" enctype="multipart/form-data">
-                <label for="file">Upload your <code>.txt</code> file and we’ll do the rest:</label>
-                <div class="file-upload-wrapper">
-                    <label for="file" class="custom-file-btn" tabindex="0">Choose File</label>
-                    <input type="file" id="file" name="file" accept=".txt" required />
-                    <span class="file-name" id="file-name">No file chosen</span>
-                </div>
-                <button type="submit">Upload &amp; Abbreviate</button>
-            </form>
+    <!-- File Upload Form -->
+    <div class="form-section">
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="file">Upload a <code>.txt</code> file, and we’ll take care of the rest:</label>
+        <div class="file-upload-wrapper">
+          <label for="file" class="custom-file-btn" tabindex="0">Choose File</label>
+          <input type="file" id="file" name="file" accept=".txt" required />
+          <span class="file-name" id="file-name">No file chosen</span>
         </div>
-
-        <hr />
-
-        <!-- Single Word Abbreviation Form -->
-        <div class="form-section">
-            <form action="/abbreviate" method="POST">
-                <label for="singleWord">Or enter a single word to abbreviate:</label>
-                <input type="text" id="singleWord" name="singleWord" placeholder="e.g. John Smith" required />
-                <button type="submit">Get Abbreviation</button>
-            </form>
-        </div>
-
-        {% if result %}
-          <div class="result" role="region" aria-live="polite">
-            <strong>Abbreviation:</strong><br />
-            <pre>{{ result }}</pre>
-          </div>
-        {% endif %}
+        <button type="submit">Upload &amp; Abbreviate</button>
+      </form>
     </div>
 
-    <script>
-      // Show selected file name next to the custom file button
-      const fileInput = document.getElementById('file');
-      const fileName = document.getElementById('file-name');
+    <hr />
 
-      fileInput.addEventListener('change', () => {
-        if (fileInput.files.length > 0) {
-          fileName.textContent = fileInput.files[0].name;
-        } else {
-          fileName.textContent = 'No file chosen';
-        }
-      });
+    <!-- Single Word Abbreviation Form -->
+    <div class="form-section">
+      <form action="/abbreviate" method="POST">
+        <label for="singleWord">Prefer to type a name or word directly?</label>
+        <input type="text" id="singleWord" name="singleWord" placeholder="e.g. John Smith" required />
+        <button type="submit">Generate Abbreviation</button>
+      </form>
+    </div>
 
-      // Remove abbreviation result on page reload only
-      window.addEventListener('load', () => {
-        const perfEntries = performance.getEntriesByType("navigation");
-        if (perfEntries.length > 0 && perfEntries[0].type === "reload") {
-          const resultSection = document.querySelector('.result');
-          if (resultSection) {
-            resultSection.remove();
-          }
+    {% if result %}
+    <div class="result" role="region" aria-live="polite">
+      <strong>Abbreviation:</strong><br />
+      <pre>{{ result }}</pre>
+    </div>
+    {% endif %}
+  </div>
+
+  <script>
+    // Show selected file name next to the custom file button
+    const fileInput = document.getElementById('file');
+    const fileName = document.getElementById('file-name');
+
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length > 0) {
+        fileName.textContent = fileInput.files[0].name;
+      } else {
+        fileName.textContent = 'No file chosen';
+      }
+    });
+
+    // Remove abbreviation result on page reload only
+    window.addEventListener('load', () => {
+      const perfEntries = performance.getEntriesByType("navigation");
+      if (perfEntries.length > 0 && perfEntries[0].type === "reload") {
+        const resultSection = document.querySelector('.result');
+        if (resultSection) {
+          resultSection.remove();
         }
-      });
-    </script>
+      }
+    });
+  </script>
 </body>
 </html>
