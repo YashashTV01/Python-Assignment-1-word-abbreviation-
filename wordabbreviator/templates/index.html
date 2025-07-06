@@ -2,109 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abbreviator</title>
-
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            margin: 50px;
-        }
-
-        h1 {
-            color: #333;
-        }
-
-        form {
-            max-width: 400px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 8px;
-            color: #555;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 16px;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        button {
-            padding: 12px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-        }
-
-        #result-section {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        #result-column {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-    </style>
+    <title>Word Abbreviation Tool</title>
 </head>
 <body>
-    <h1>Abbreviator</h1>
-
-    <form id="abbreviate-form" action="/process" method="post">
-        <label for="path">Enter data filename and path:</label>
-        <input type="text" name="path" required>
-        <button type="submit">Abbreviate</button>
+    <h2>Upload a .txt file to generate abbreviations</h2>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".txt" required>
+        <button type="submit">Upload & Process</button>
     </form>
-    <h2>Abbreviation Result:</h2>
-    <section id="result-section" style="display:none;">
-        <div id="result-column"></div>
-    </section>
-    <script>
-        document.getElementById('abbreviate-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            var formData = new FormData(event.target);
-            fetch(event.target.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('result-section').style.display = 'flex';
-                displayResult(data.result);
-            })
-            .catch(error => console.error('Error:', error));
-        });
-        function displayResult(result) {
-            var resultDiv = document.getElementById('result-column');
-            resultDiv.innerHTML = '';
-            var lines = result.split('\n');
-            for (var i = 0; i < lines.length; i += 2) {
-                var originalName = lines[i];
-                var abbreviation = lines[i + 1];
-                var pairDiv = document.createElement('div');
-                pairDiv.textContent = originalName + ' - ' + abbreviation;
-                resultDiv.appendChild(pairDiv);
-            }
-        }
-    </script>
 </body>
 </html>
